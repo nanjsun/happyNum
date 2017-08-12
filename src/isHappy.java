@@ -1,7 +1,15 @@
+import java.util.ArrayList;
+
 public class isHappy {
     public int count = 0;
     boolean flag = false;
+    ArrayList recursionNum = new ArrayList();
     public boolean isHappy(int n) {
+        if(recursionNum.contains(n)){
+            flag = false;
+            return flag;
+        }
+        recursionNum.add(n);
 
         if (n == 1){
             flag = true;
@@ -19,7 +27,7 @@ public class isHappy {
         int temp = 0;
         int index = 0;
 
-        for(int i = 5; i > -1; i --){
+        for(int i = 10; i > -1; i --){
             index = (int)(n/(int)Math.pow(10,i));
             System.out.println("---->index:"+index);
 
@@ -27,13 +35,15 @@ public class isHappy {
             n = n - ((int)Math.pow(10,i) * index);
             System.out.println("---->temp:"+temp);
         }
+
         n = temp;
+
         System.out.println("--->n:"+n);
         count ++;
-        if(count == 99){
-            flag =  false;
-            return flag;
-        }
+//        if(count == 99){
+//            flag =  false;
+//            return flag;
+//        }
 
         System.out.println("--->count:"+count);
         System.out.println("##############");
